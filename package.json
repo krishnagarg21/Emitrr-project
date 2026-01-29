@@ -11,5 +11,8 @@
   "description": "",
   "dependencies": {
     "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "vite": "^7.3.1"
   }
 }
