@@ -9,11 +9,12 @@ app.use(cors());
 app.use(express.json());
 
 const server = http.createServer(app);
-const allowedOrigins = (process.env.ALLOWED_ORIGINS || "http://localhost:3000,http://localhost:5173").split(',');
+const allowedOrigins = (process.env.ALLOWED_ORIGINS || "http://localhost:3000,http://localhost:5173").split(',').map(origin => origin.trim());
 const io = new Server(server, {
     cors: {
         origin: allowedOrigins,
-        methods: ["GET", "POST"]
+        methods: ["GET", "POST"],
+        credentials: true
     }
 });
 
