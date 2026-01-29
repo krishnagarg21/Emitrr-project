@@ -4,7 +4,10 @@ const Leaderboard = () => {
     const [leaders, setLeaders] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:3001/leaderboard')
+        const apiBase = import.meta.env.VITE_BACKEND_URL || '';
+        const apiUrl = apiBase ? apiBase.replace(/\/$/, '') + '/leaderboard' : '/leaderboard';
+
+        fetch(apiUrl)
             .then(res => res.json())
             .then(data => setLeaders(data))
             .catch(err => console.error('Error fetching leaderboard', err));
