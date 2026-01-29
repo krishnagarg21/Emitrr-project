@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 
 const server = http.createServer(app);
-const allowedOrigins = (process.env.ALLOWED_ORIGINS || "http://localhost:3000,http://localhost:5173").split(',').map(origin => origin.trim());
+const allowedOrigins = (process.env.ALLOWED_ORIGINS || "http://localhost:3000,http://localhost:5173,https://emitrr-project.vercel.app").split(',').map(origin => origin.trim());
 const io = new Server(server, {
     cors: {
         origin: allowedOrigins,
